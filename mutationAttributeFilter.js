@@ -32,3 +32,5 @@ document.querySelector("#changeDataRole").addEventListener("click", () => {
     console.log(container.getAttribute("data-role"),'container.getAttribute("data-role")');
   container.setAttribute("data-role", container.getAttribute("data-role") === "main" ? "secondary" : "main");
 });
+
+console.log('ABC');
