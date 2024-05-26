@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container,
+        #log {
+        height: 150px;
+        overflow: scroll;
+        }
+
+        #container li {
+        background-color: paleturquoise;
+        margin: 0.5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="add">Add child</button>
+    <button id="remove">Remove child</button>
+    <button id="reset">Reset example</button>
+
+    <ul id="container"></ul>
+
+    <pre id="log"></pre>
+    <script src="mutation.js"></script>
+</body>
+</html>
