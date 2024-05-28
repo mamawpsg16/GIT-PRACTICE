@@ -19,7 +19,6 @@ mainContainer.style.justifyContent = 'center';
 // paragraph.appendChild(text);
 
 section.appendChild(title);
-mainContainer.appendChild(section);
 // section.appendChild(paragraph);
 
 // const clonedParagraph = paragraph.cloneNode(true);
@@ -73,7 +72,6 @@ itemForm.addEventListener('submit', (e) => {
 // });
 
 const tabContainer = document.getElementById('tab-container');
-mainContainer.appendChild(tabContainer);
 const tabItems = document.querySelectorAll('.tab-item');
 const tabContents = document.querySelectorAll('.tab-content');
 
@@ -117,7 +115,6 @@ tabContainer.addEventListener('click', (e) =>{
 const navContainer = document.getElementById('nav-container');
 const parentNav = document.getElementById('parent-item');
 const navItems = document.querySelectorAll('.nav-item');
-mainContainer.appendChild(navContainer);
 
 function handleHover(e){
     const element = e.target;
@@ -134,3 +131,11 @@ navContainer.addEventListener('mouseover',handleHover.bind(0.5));
 
 navContainer.addEventListener('mouseout',handleHover.bind(1));
 
+
+const elementContainer = document.getElementById('element-traversing');
+const ul = document.getElementById('ul');
+const ulParent = ul.parentNode;
+const firstChild = ul.firstElementChild;
+const lastChild = ul.lastElementChild;
+console.log(firstChild.closest('#element-traversing'));
+console.log(lastChild,'lastChild');
