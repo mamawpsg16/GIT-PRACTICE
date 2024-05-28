@@ -1,3 +1,2 @@
-shit/
-testDirectory/*
-!shit/
+# *.ts
+!test/*
