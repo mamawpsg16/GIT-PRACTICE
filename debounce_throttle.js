@@ -5,7 +5,6 @@ function throttle(func, limit) {
         const args = arguments;
         const context = this;
         if (!inThrottle) {
-            console.log(args,'args');
             func.apply(context, args);
             inThrottle = true;
             setTimeout(() => inThrottle = false, limit);
