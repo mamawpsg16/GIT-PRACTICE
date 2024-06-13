@@ -137,5 +137,68 @@ const ul = document.getElementById('ul');
 const ulParent = ul.parentNode;
 const firstChild = ul.firstElementChild;
 const lastChild = ul.lastElementChild;
-console.log(firstChild.closest('#element-traversing'));
-console.log(lastChild,'lastChild');
+// console.log(firstChild.closest('#element-traversing'));
+// console.log(lastChild,'lastChild');
+
+const table = document.getElementById("tableParent");
+
+const getFixedColumns = function(parentElement, target, count, isRow = true){
+    const tableData = [];
+    let elements;
+
+    const nodeList =  parentElement.querySelectorAll(target);
+
+    if(!nodeList.length) return;
+
+    if(!isRow){
+        elements = Array.from(nodeList).slice(0, count);
+        return elements;
+    }
+
+    nodeList.forEach((node) =>{
+        const childrens  = node.querySelectorAll("td");
+        const fixedChildrens  = Array.from(childrens).slice(0, count);
+        fixedChildrens.forEach(column => {
+            console.log(column, column.textContent);
+            tableData.push(column)
+        })
+    })
+
+    return tableData;
+}
+
+const setFixedColumns = function(nodes){
+    if(!nodes.length) return;
+    let previous_element;
+    let current_index = 0;
+    let previous_width = 0;
+    for (const [index,node] of nodes.entries()) {
+        previous_element = typeof nodes[index-1] !== 'undefined' ? nodes[index-1] : null;
+        node.style.position = "sticky";   
+        node.style.zIndex = 1;   
+
+        if(current_index !== node.parentNode.rowIndex) {
+            previous_width = 0;
+            current_index = node.parentNode.rowIndex;
+            previous_element = null;
+        }
+
+        if(nodes.length == index){
+            node.style.left = "0";
+        }
+
+        if(!previous_element) {
+            node.style.left = "0";
+        }else {
+            previous_width = previous_width + previous_element.clientWidth;
+            node.style.left =  previous_width + "px";
+        }
+    }
+}
+
+const tableHeaders = getFixedColumns(table, "thead th", 3, false);
+const tableDatas = getFixedColumns(table, "tbody tr", 3);
+// const tableFooters = getFixedColumns(table, "tfoot tr", 3);
+
+const setTableHeaders = setFixedColumns(tableHeaders)
+const setTableDatas = setFixedColumns(tableDatas)
