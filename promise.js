@@ -30,3 +30,18 @@ function fetchData(url) {
 fetchData("https://cat-fact.herokuapp.com/facts/random")
     .then(data => console.log(data))
     .catch(error => console.error("Error:", error));
+
+    let promisev2 = new Promise(function(resolve, reject) {
+        setTimeout(() => reject('ABC'));
+    });
+    
+    // Handle rejection in the second function in .then
+    promisev2.then(
+        result => console.log(result, 'result'), // this handles the resolved case
+        error => console.log(error, 'error')     // this handles the rejected case
+    );
+
+    
+    // Handle rejection with .catch
+    // promisev2.then(result => console.log(result, 'result'))
+    // .catch(error => console.log(error, 'error'));
