@@ -1,0 +1,28 @@
+#table-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+    position: relative;
+}
+#sticky-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    width: 100%;
+}
+table {
+    width: auto;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+th {
+    background-color: #f8f8f8;
+}
